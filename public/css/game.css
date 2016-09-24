@@ -70,6 +70,13 @@ h1{
 .hidden{
     display: none;
 }
+
+#messages li{
+    color: yellow;
+    text-align: center;
+    margin: 1rem auto;
+}
+
 #progress{
     width: 0;
     height: 2rem;
