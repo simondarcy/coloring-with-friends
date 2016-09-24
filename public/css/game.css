@@ -2,10 +2,42 @@
 
 
 html, body{
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
     width: 100%;
     height: 100%;
     overflow:hidden;
 }
+
+#username{
+    display: block;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 80%;
+    text-align: center;
+    margin: 1rem auto;
+}
+.button {
+    display: block;
+    margin: 1rem auto;
+    background-color:#2ecc71;
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
+    border: none;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+}
+.button:hover {
+    background-color:#27ae60;
+}
+.button:active {
+    position:relative;
+    top:1px;
+}
+
 
 body{
     margin: 0;
@@ -13,6 +45,26 @@ body{
 }
 h1{
     font-family: 'Modak', cursive;
+    font-size: 2rem;
+    font-weight: normal;
+    color: #2ecc71;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+#user p{
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#users{
+    text-align: center;
+    margin: 1rem auto;
+    color:white;
+}
+#users p{
+    font-weight: bold;
 }
 
 .hidden{
