@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+
+    <title>Coloring With Fiends</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Coloring With Friends">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/game.css"/>
+
+</head>
+<body>
+
+<div id="intro">
+    <h1>Coloring With Friends</h1>
+    <ul id="messages"></ul>
+    <div id="users"></div>
+    <form id="user" action="">
+        <p>Join the fun!</p>
+        <input id="username" autocomplete="off" placeholder="your name"/>
+        <button>Play</button>
+    </form>
+</div>
+
+<div id="game" class="hidden">
+    <div id="win">
+        <p id="message">You Win!</p>
+        <button id="replay">Play Again?</button>
+    </div>
+    <div id="progress"></div>
+    <div id="display">0%</div>
+    <canvas id="canvas"></canvas>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script src="/js/game.js"></script>
+<script src="/js/coloring.js"></script>
+
+</body>
+</html>
