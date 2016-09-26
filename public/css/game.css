@@ -8,6 +8,16 @@ html, body{
     overflow:hidden;
 }
 
+
+#intro{
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 1rem;
+}
+
 #username{
     display: block;
     padding: 1rem;

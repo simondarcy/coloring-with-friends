@@ -11,29 +11,49 @@ app.get('/', function(req, res){
 
 var onlineUsers = {};
 
+var gameid;
+
+io.use(function(socket, next) {
+    var handshakeData = socket.request;
+    gameid = handshakeData._query['gameid'];
+    console.log("middleware:", handshakeData._query['gameid']);
+    next();
+});
+
 io.on('connection', function(socket){
 
     io.emit('users', onlineUsers);
-
     //add new user to online
     onlineUsers[socket.id] = "";
 
+    if(gameid == "null") {
+        gameid = socket.id;
+    }
 
 
+    socket.join(gameid);
 
-    socket.on('chat message', function(msg){
-        io.emit('chat message', msg);
-    });
+    io.emit('gameid', gameid);
+
+    io.to(gameid).emit('debug', Math.floor(Math.random() * 1000) );
+
 
     socket.on('winner', function(msg){
         io.emit('winner', msg);
     });
 
-    socket.on('new user', function(msg){
-        onlineUsers[socket.id] = msg;
-        io.emit('new user', msg);
-        io.emit('users', onlineUsers);
+    socket.on('restart', function(msg){
+        io.emit('restart', msg);
+    });
 
+    socket.on('new user', function(user){
+
+        //Update  socket with the user name
+        onlineUsers[socket.id] = user;
+        //send user back up to the client
+        io.emit('new user', user);
+        //Send back full user list
+        io.emit('users', onlineUsers);
     });
 
     socket.on('disconnect', function(){

@@ -122,32 +122,42 @@ function checkData(){
 }
 
 
-socket.on('winner', function(msg){
+
+
+function end(){
+    //Funtion called when someone wins!
+
+    //fill your screen red (slight bug cover up here)
+    context.fillStyle="red";
+    context.fillRect(0,0,canvas.width,canvas.height);
+    //send message to everyone else that the game is over
+    socket.emit('winner', me);
+}
+
+socket.on('winner', function(winner){
+    //when the servers says someones one, stop the game and display the winner
     canPaint = false;
     $("#win").removeClass("animate");
-    $("#win").find("#message").text(msg + " wins!");
+    $("#win").find("#message").text(winner + " wins!");
     $("#win").addClass("animate");
 });
 
-function end(){
-    canPaint = false;
-    context.fillStyle="red";
-    context.fillRect(0,0,canvas.width,canvas.height);
-    $("#win").addClass("animate");
-    //send message to everyone else that the game is over
-
-    socket.emit('winner', me);
-
-}
-
 $('#replay').on("click", function(e){
+    //tell the server you want to restart the game
+    socket.emit('restart', me);
+});
 
+socket.on('restart', function(msg){
+    //when a user has requested a reset, restart the game
+    restart();
+});
+
+//Functio to reset the game
+function restart(){
     clickX = [];
     clickY = [];
     clickDrag = [];
-
     context.clearRect(0,0,canvas.width,canvas.height);
     canPaint = true;
     $("#win").removeClass("animate");
-});
-
+}
