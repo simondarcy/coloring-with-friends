@@ -1,7 +1,8 @@
 # Coloring with friends
 
-This is the source code for a very simple chat example used for 
-the [Getting Started](http://socket.io/get-started/chat/) guide 
-of the Socket.IO website.
+Simple Multi-Player build using Node JS and http://socket.io/
 
-Please refer to it to learn how to run this application.
+Aim of the game is to color in the screen quicker than your opponent
+
+Live demo here: http://coloring-with-friends.herokuapp.com/
+
